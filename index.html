@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Tarefas Avançada</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>📋 Lista de Tarefas</h1>
+      <div class="header-actions">
+        <button id="theme-toggle">🌙</button>
+      </div>
+    </header>
+
+    <form id="task-form">
+      <input type="text" id="task-input" placeholder="Digite uma tarefa..." />
+      <span id="error-message" class="error-message"></span>        
+      <input type="date" id="task-date" required/>
+      <select id="task-priority">
+        <option value="baixa">Baixa</option>
+        <option value="media" selected>Média</option>
+        <option value="alta">Alta</option>
+      </select>
+      <button type="submit" class="add">Adicionar</button>
+    </form>
+
+    <div class="filters">
+      <button data-filter="all" class="active">Todas</button>
+      <button data-filter="active">Ativas</button>
+      <button data-filter="completed">Concluídas</button>
+    </div>
+
+    <ul id="task-list"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
