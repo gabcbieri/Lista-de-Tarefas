@@ -9,14 +9,42 @@ let tasks = [];
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const text = taskInput.value.trim();
-    const date = document.getElementById('task-date').value; // pega a data
-    if (text !== '') {
-      tasks.push({ text, date, completed: false }); // salva a data
-      taskInput.value = '';
-      document.getElementById('task-date').value = ''; // limpa a data também
-      renderTasks();
-    }
-});
+    const dateInput = document.getElementById('task-date');
+    const date = dateInput.value;
+  
+    const errorMsg = document.getElementById('error-message');
+    let hasError = false;
+  
+// Reset erros anteriores
+taskInput.classList.remove('input-error');
+dateInput.classList.remove('input-error');
+errorMsg.classList.remove('visible');
+
+
+// Validação
+if (text === '') {
+  taskInput.classList.add('input-error');
+  hasError = true;
+}
+if (date === '') {
+  dateInput.classList.add('input-error');
+  hasError = true;
+}
+
+if (hasError) {
+  errorMsg.textContent = 'Preencha todos os campos.';
+  errorMsg.classList.add('visible');
+  return;
+}
+
+  
+    // Se tudo ok, salva e limpa
+    tasks.push({ text, date, completed: false });
+    taskInput.value = '';
+    dateInput.value = '';
+    renderTasks(currentFilter);
+  });
+  
 
 function renderTasks(filter = 'all') {
     taskList.innerHTML = '';
@@ -69,4 +97,3 @@ themeToggle.addEventListener('click', () => {
 });
 
 console.log('Tema escuro?', document.body.classList.contains('dark'));
-

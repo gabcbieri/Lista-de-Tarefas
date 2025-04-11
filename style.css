@@ -184,12 +184,18 @@ input:hover, button:hover {
 .error-message {
     color: red;
     font-size: 0.875rem;
+    height: 1em; /* reserva espaço fixo pra 1 linha */
     margin-top: 5px;
-    display: none;
-  }
-  
-  input.input-error {
-    border: 2px solid red;
-    background-color: #ffe5e5;
-  }
-  
+    display: block;
+    visibility: hidden; /* esconde visualmente, mas ocupa espaço */
+}
+  .error-message.visible {
+    visibility: visible;
+}
+
+input.input-error,
+select.input-error {
+  border: 2px solid #e57373; /* vermelho mais suave */
+  background-color: #fff5f5; /* tom claro que combina com branco */
+  transition: 0.3s ease;
+}
