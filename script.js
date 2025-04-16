@@ -6,7 +6,6 @@ const themeToggle = document.getElementById('theme-toggle');
 
 let tasks = [];
 
-// Tenta carregar do localStorage ao iniciar
 window.addEventListener('DOMContentLoaded', () => {
   const savedTasks = localStorage.getItem('tarefas');
   if (savedTasks) {
@@ -25,12 +24,10 @@ taskForm.addEventListener('submit', (e) => {
   const errorMsg = document.getElementById('error-message');
   let hasError = false;
 
-  // Reset erros anteriores
   taskInput.classList.remove('input-error');
   dateInput.classList.remove('input-error');
   errorMsg.classList.remove('visible');
 
-  // Validação
   if (text === '') {
     taskInput.classList.add('input-error');
     hasError = true;
@@ -46,9 +43,8 @@ taskForm.addEventListener('submit', (e) => {
     return;
   }
 
-  // Se tudo ok, salva e limpa
   tasks.push({ text, date, priority, completed: false });
-  saveTasks(); // Salva no localStorage
+  saveTasks(); 
   taskInput.value = '';
   dateInput.value = '';
   renderTasks(currentFilter);
@@ -92,7 +88,6 @@ function renderTasks(filter = 'all') {
   });
 }
 
-// 👉 Função para salvar as tarefas no localStorage
 function saveTasks() {
   localStorage.setItem('tarefas', JSON.stringify(tasks));
 }
@@ -117,8 +112,4 @@ filterButtons.forEach(btn => {
     btn.classList.add('active');
     renderTasks(currentFilter);
   });
-});
-
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
 });

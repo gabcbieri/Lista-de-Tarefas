@@ -7,15 +7,6 @@
   --date-text: #000;
 }
 
-body.dark {
-  --bg: #181818;
-  --text: #f0f0f0;
-  --task-text: #000; /* força texto das tarefas pra preto no modo escuro */
-  --accent: #66bb6a;
-  --card-bg: white;
-  --date-text: #fff;
-}
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
